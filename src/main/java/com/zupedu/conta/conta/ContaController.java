@@ -19,6 +19,9 @@ public class ContaController {
     @Autowired
     public ContaRepository contaRepository;
 
+    @Autowired
+    private ContaNovaProducer contaNovaProducer;
+
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> inserir(@Valid @RequestBody ContaRequest request){
         logger.info("Cadastrando uma nova Conta");
@@ -32,6 +35,8 @@ public class ContaController {
             conta = contaRepository.save(conta);
 
             logger.info("Conta cadastrada com numero: {} e agência: {} ", conta.getNumero(), conta.getAgencia());
+
+            contaNovaProducer.enviar(conta);
 
             return ResponseEntity
                     .status(HttpStatus.CREATED)
