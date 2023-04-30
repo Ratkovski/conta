@@ -65,4 +65,17 @@ public class Conta {
     public LocalDateTime getDataCriacao() {
         return dataCriacao;
     }
+
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "id=" + id +
+                ", documentoTitular='" + documentoTitular + '\'' +
+                ", nomeTitular='" + nomeTitular + '\'' +
+                ", agencia=" + agencia +
+                ", numero=" + numero +
+                ", saldo=" + saldo +
+                ", dataCriacao=" + dataCriacao +
+                '}';
+    }
 }
